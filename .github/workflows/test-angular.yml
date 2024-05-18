@@ -2,7 +2,7 @@ name: Build and test Angular app
 
 on:
   push:
-    branches: [ test_angular ]
+    branches: [ TEST_ANGULAR ]
 
 jobs:
   demo:
