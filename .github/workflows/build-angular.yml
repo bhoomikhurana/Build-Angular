@@ -1,14 +1,24 @@
 name: Build Angular App
   
-on:     
+on:
   push:
     branches: [ main ]
-  workflow_dispatch:
-     
+
 jobs:
-  build-deploy:
-    uses: InterviewProOrg/BuildDeployAngular/.github/workflows/reusable-build-deploy-angular.yml@main 
-    secrets: inherit
-    with:
-      pythonVersion: 3.10
-      nodejsVersion: 18.20.4
+  build-angular:
+    runs-on: ubunut-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+    
