@@ -9,9 +9,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup Python and NodeJS
+        id: setup-build
         uses: bhoomikhurana/testing-composite-action@v1
-        
+        with:
+          pythonVersion: 3.10
+          nodeVersion: 18.20.4
+
+      - name: Verifying if outputs were set
+        run: |
+          echo "Respository Owner ${{ steps.setup-build.outputs.repoOwner }}"
+          echo "Default Branch ${{ steps.setup-build.outputs.defaultBranch }}"
+          echo "Default Branch ${{ steps.setup-build.outputs.cicdkey }}"
+
 
       - name: Install dependencies
         run: npm install
