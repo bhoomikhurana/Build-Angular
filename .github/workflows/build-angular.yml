@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup Python and NodeJS
-        uses: bhoomikhurana/testing-composite-action@main
+        uses: bhoomikhurana/testing-composite-action@v1
         
 
       - name: Install dependencies
