@@ -17,9 +17,11 @@ jobs:
         shell: bash
         run: |
           echo "age=22" >> $GITHUB_OUTPUT
-          echo "count=10000 >> $GITHUB_ENV
+          echo "count=10000" >> $GITHUB_ENV
           echo ${{ env.CHANNEL_NAME }}
-          echo ${{ env.count }}
+
+      - name: access env variable
+        run: echo ${{ env.count }}
 
       - name: get-output
         run: echo ${{ steps.set-output.outputs.age }}
