@@ -1,5 +1,8 @@
 name: Job Output
 
+on:
+  workflow_dispatch
+  
 job:
   job1:
     runs-on: ubuntu-latest
