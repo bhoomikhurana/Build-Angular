@@ -1,0 +1,14 @@
+name: Job Output
+
+job:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      name: set-output
+      id: set-output
+      shell: bash
+      run: echo "age=22" >> $GITHUB_OUTPUT
+
+      name: get-output
+      run: ${{ steps.set-output.outputs.age }}
