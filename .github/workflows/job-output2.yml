@@ -2,6 +2,9 @@ name: Job Output
 
 on:
   workflow_dispatch
+
+env:
+  CHANNEL_NAME: Interview Pro
   
 jobs:
   job1:
@@ -12,7 +15,9 @@ jobs:
       - name: set-output
         id: set-output
         shell: bash
-        run: echo "age=22" >> $GITHUB_OUTPUT
+        run: |
+          echo "age=22" >> $GITHUB_OUTPUT
+          echo ${{ env.CHANNEL_NAME }}
 
       - name: get-output
         run: echo ${{ steps.set-output.outputs.age }}
@@ -22,4 +27,6 @@ jobs:
     needs: job1
     steps:
       - name: set-output2
-        run: echo ${{ needs.job1.outputs.output_1}}
+        run: |
+          echo ${{ needs.job1.outputs.output_1}}
+          echo ${{ env.CHANNEL_NAME }}
